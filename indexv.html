@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html class="no-js" lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sindicato de Investigadores e Investigadoras de la UNA (SIUNA)</title>
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+        /* Estilos para la sección de Instagram */
+        .instagram-section {
+            padding: 60px 0;
+            background: #fafafa;
+        }
+        
+        .instagram-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .instagram-header h2 {
+            color: #333;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .instagram-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #E1306C;
+        }
+        
+        .instagram-header p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .instagram-feed {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .instagram-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .instagram-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .instagram-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .instagram-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .instagram-card:hover .instagram-image img {
+            transform: scale(1.05);
+        }
+        
+        .instagram-content {
+            padding: 15px;
+        }
+        
+        .instagram-content p {
+            margin-bottom: 15px;
+            color: #444;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .instagram-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #777;
+            font-size: 12px;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+        
+        .instagram-placeholder {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            border-radius: 10px;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .instagram-placeholder i {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        
+        .instagram-placeholder h3 {
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        
+        .instagram-placeholder p {
+            margin-bottom: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .setup-steps {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+            text-align: left;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .setup-steps h3 {
+            color: #E1306C;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .step {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: #E1306C;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+        }
+        
+        .btn-instagram {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s ease;
+            display: inline-block;
+        }
+        
+        .btn-instagram:hover {
+            opacity: 0.9;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .instagram-feed {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mobile-menu-open" class="shadow-large">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+    </div>
+    <!-- End #mobile-menu-toggle -->
+    <header>
+        <div id="mobile-menu-close">
+            <span>Close</span> <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+        <ul id="menu" class="shadow">
+            <li>
+                <a href="#about">Acerca</a>
+            </li>
+            <li>
+                <a href="#experience">Estructura Organizativa</a>
+            </li>
+            <li>
+                <a href="#events">Eventos y Comunicados</a>
+            </li>
+            <li>
+                <a href="#instagram">Noticias</a>
+            </li>
+            <li>
+                <a href="#contact">Contacto</a>
+            </li>
+        </ul>
+    </header>
+    <!-- End header -->
+
+    <div id="lead">
+        <div id="lead-content">
+            <img src="files/logo.jpeg" height="100"  />
+            <h1>Sindicato de Investigadores e Investigadoras de la UNA</h1>
+            <h2>SIUNA</h2>
+            <a href="files/ESTATUTO DE SIUNA APROBADOFINAL.pdf" class="btn-rounded-white">Estatuto</a>
+        </div>
+        <!-- End #lead-content -->
+
+        <div id="lead-overlay"></div>
+
+        <div id="lead-down">
+            <span>
+                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </span>
+        </div>
+        <!-- End #lead-down -->
+    </div>
+    <!-- End #lead -->
+
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h2 class="heading">Acerca del Sindicato</h2>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                        El Sindicato de Investigadores e Investigadoras de la Universidad Nacional de Asunción (SIUNA) fue fundado el 23 de noviembre de 2024, en el Hospital de Clínicas, Facultad de Ciencias Médicas, UNA, San Lorenzo, Paraguay.
+                    </p>
+
+                    
+                    <h2>Objetivos</h2>
+            <ul>
+                <li>Promoción y defensa de los derechos laborales de los investigadores de la UNA.</li>
+                <li>Apoyo al desarrollo y fortalecimiento de la investigación en la institución.</li>
+                <li>Representación gremial de los investigadores ante autoridades y organismos pertinentes.</li>
+            </ul> 
+            
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End #about -->
+
+    <div id="experience" class="background-alt">
+        <h2 class="heading">Estructura Organizativa</h2>
+        <div id="experience-timeline">
+            <div data-date="Comisión Directiva">
+                <li>Secretaría General: Diego Herbin Stalder Díaz</li>
+                <li>Secretaría General Adjunta: Laura Regina León Ovelar</li>
+                <li>Secretaría de Actas y Documentaciones: Juan Carlos Cabral Figueredo</li>
+                <li>Secretaría de Organización y Conflictos: Ever José López Grau</li>
+                <li>Secretaría de Finanzas: Yenny Patricia González Villalba</li>
+                <li>Secretaría de Formación: Christian Emilio Schaerer Serra</li>
+                <li>Secretaría de Relaciones Interinstitucionales y Comunicación: Ana Magdalena Velázquez Chávez</li>
+                <li>Vocal Primero: Belinda Celeste Figueredo Leguizamón</li>
+                <li>Vocal Segundo: Angelina Adelfa Trinidad Da Silva</li>
+            </div>
+            <div data-date="Sindicatura">
+                <li>Sindicatura Titular: José Domingo Colbes Sanabria</li>
+                <li>Sindicatura Suplente: Viviana María Martínez Rojas</li>
+            </div>
+            <div data-date="Tribunal Electoral Independiente">
+                <li>Titular 1: Ana Raquel Flores López Moreira</li>
+                <li>Titular 2: Lelis Noelia Morales Clemote</li>
+                <li>Titular 3: Maira Santacruz Bogado</li>
+                <li>Suplente: Elba Beatriz Núñez Ibáñez</li>
+            </div>
+
+            <div data-date="Comité de Ética">
+                <li>Miembro 1: Miguel Hermenegildo López</li>
+                <li>Miembro 2: Pasionaria Ramos Ruiz Díaz</li>
+                <li>Miembro 3: Hajime Guillermo Kurita Oyamada</li>
+            </div>
+          
+        </div>
+         
+        </div>
+    </div>
+    <!-- End #experience -->
+
+    <div id="events" class="background-alt">
+        <h2 class="heading">Eventos y Comunicados</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Charla Informativa</h3>
+                    <img src="files/charlainformativa.jpeg" alt="Charla Informativa" style="max-width:100%;height:auto;">
+                </div>
+                <div class="col-md-6">
+                    <h3>Comunicado</h3>
+                    <img src="files/comunicado.jpeg" alt="Comunicado SIUNA" style="max-width:100%;height:auto;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End #events -->
+
+    <!-- Nueva sección de Instagram -->
+    <section id="instagram" class="instagram-section">
+        <div class="container">
+            <div class="instagram-header">
+                <h2>Últimas Noticias en Instagram</h2>
+                <p>Mantente informado con nuestras últimas actualizaciones y noticias a través de nuestra cuenta oficial de Instagram.</p>
+            </div>
+            
+            <!-- Widget de Instagram - Sección de marcador de posición -->
+            <div class="instagram-placeholder">
+                <i class="fab fa-instagram"></i>
+                <h3>Feed de Instagram en Vivo</h3>
+                <p>Conecta tu feed de Instagram para mostrar automáticamente tus últimas publicaciones aquí. Las noticias y actualizaciones se sincronizarán automáticamente.</p>
+                <a href="https://www.instagram.com/siunapyprensa/" class="btn-instagram" target="_blank">Ver nuestro Instagram</a>
+            </div>
+            
+            <!-- Contenedor para el feed de Instagram -->
+            <div id="instagram-feed-container" class="instagram-feed">
+                <!-- Las publicaciones se cargarán dinámicamente aquí -->
+            </div>
+            
+            <div class="setup-steps">
+                <h3>¿Cómo conectar tu feed de Instagram?</h3>
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <span>Regístrate en <a href="https://embedsocial.com/es/blog/embed-instagram-feed-for-free/" target="_blank">EmbedSocial</a> (ofrece plan gratuito)</span>
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <span>Conecta tu cuenta de Instagram (@siunapyprensa)</span>
+                </div>
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <span>Personaliza el diseño de tu widget</span>
+                </div>
+                <div class="step">
+                    <span class="step-number">4</span>
+                    <span>Copia el código de instalación y pégalo en esta sección de tu HTML</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Instagram section -->
+
+    <div id="contact">
+        <h2>Contacto</h2>
+        <div id="contact-form" style="max-width:400px;margin:auto;">
+            <ul style="list-style:none;padding:0;">
+                <li style="margin-bottom:10px;">
+                    <i class="fa fa-envelope" aria-hidden="true" style="margin-right:8px;color:#007bff;"></i>
+                    <strong>Email:</strong> siunapy2024@gmail.com
+                </li>
+                <li style="margin-bottom:10px;">
+                    <i class="fa fa-phone" aria-hidden="true" style="margin-right:8px;color:#28a745;"></i>
+                    <strong>Teléfono:</strong> +595 961 840205
+                </li>
+            </ul>
+        </div>
+        <!-- End #contact-form -->
+    </div>
+    <!-- End #contact -->
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5 copyright">
+                    <p>
+                        Copyright &copy; <span id="current-year">2025</span> SIUNA
+                    </p>
+                </div>
+                <div class="col-sm-2 top">
+                    <span id="to-top">
+                        <i class="fa fa-chevron-up" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="col-sm-5 social">
+                    <p style="margin-bottom:8px;"><strong>Síguenos:</strong></p>
+                    <ul>
+                        <li>
+                            <a href="https://instagram.com/siunapyprensa" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End footer -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/scripts.min.js"></script>
+    
+    <script>
+        // Actualizar el año actual en el copyright
+        document.getElementById("current-year").textContent = new Date().getFullYear();
+        
+        // Código para cargar el widget de Instagram después de configurarlo
+        // Esta es una implementación básica que muestra cómo podría funcionar
+        
+        // Simulación de datos de Instagram (reemplazar con widget real)
+        const instagramPosts = [
+            {
+                image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                text: "¡Gran logro del sindicato! Después de meses de negociación, hemos conseguido mejoras importantes en las condiciones laborales.",
+                likes: 243,
+                date: "Hace 2 días"
+            },
+            {
+                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                text: "Próxima asamblea general: 25 de noviembre. ¡No faltes! Trataremos temas importantes sobre el futuro de nuestra organización.",
+                likes: 187,
+                date: "Hace 5 días"
+            },
+            {
+                image: "https://images.unsplash.com/photo-1587560699334-cc4ff634909a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                text: "Curso de formación en derechos laborales. Abierto a todos los miembros. Inscríbete ya ya que las plazas son limitadas.",
+                likes: 156,
+                date: "Hace 1 semana"
+            }
+        ];
+        
+        // Función para renderizar publicaciones de Instagram
+        function renderInstagramPosts() {
+            const container = document.getElementById('instagram-feed-container');
+            
+            // Limpiar contenedor
+            container.innerHTML = '';
+            
+            // Agregar publicaciones
+            instagramPosts.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.className = 'instagram-card';
+                postElement.innerHTML = `
+                    <div class="instagram-image">
+                        <img src="${post.image}" alt="Publicación de Instagram">
+                    </div>
+                    <div class="instagram-content">
+                        <p>${post.text}</p>
+                        <div class="instagram-meta">
+                            <span><i class="far fa-heart"></i> ${post.likes}</span>
+                            <span>${post.date}</span>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(postElement);
+            });
+        }
+        
+        // Ejecutar cuando el documento esté cargado
+        document.addEventListener('DOMContentLoaded', function() {
+            renderInstagramPosts();
+        });
+        
+        // Código para cargar el widget real de Instagram (reemplazar con el código de EmbedSocial)
+        /*
+        // Ejemplo de código de EmbedSocial (debes obtener tu propio código)
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "https://embedsocial.com/cdn/ht.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'EmbedSocialHashtagScript'));
+        */
+    </script>
+    
+    <!-- 
+        INSTRUCCIONES: 
+        1. Regístrate en https://embedsocial.com/es/blog/embed-instagram-feed-for-free/ 
+        2. Crea tu widget de Instagram conectando tu cuenta @siunapyprensa
+        3. Copia el código de instalación y pégalo aquí (reemplazando este comentario)
+    -->
+</body>
+
+</html>

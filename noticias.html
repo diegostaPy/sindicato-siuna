@@ -1,20 +1,19 @@
-<!doctype html>
-<html class="no-js" lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Noticias - SIUNA</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+ 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <style>
-        /* Ajuste del cuadro news */
-        #news .box { background:#fff; padding:24px; border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,0.06); }
-        #news img { display:block; margin:0 auto; border-radius:4px; }
+          /* Mantener aspecto similar a #about */
+        #members .box { background:#fff; padding:24px; border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,0.06); }
+        #members .form-control { max-width:420px; }
 
         /* Lead reducido a 1/3 de pantalla y centrado (desktop); responsive para móviles */
         #lead {
@@ -29,19 +28,143 @@
             text-align: center;
             padding: 6px 12px;
         }
+        
         @media (max-width: 576px) {
             #lead { height: auto; padding: 18px 0; }
             #lead #lead-content img { height: 72px; }
         }
+        
+        .news-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .news-image:hover {
+            transform: scale(1.03);
+        }
+        
+        .news-title {
+            font-size: 14px;
+            margin-top: 10px;
+            text-align: center;
+            color: #2F5496;
+            font-weight: bold;
+        }
+        
+        
+        
+        h1, h2, h3 {
+            color: #2F5496;
+        }
+        
+        .contact-info {
+            margin: 20px 0;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+        }
+        
+        .heading {
+            border-bottom: 2px solid #2F5496;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+        
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        
+        .lightbox-text {
+            background-color: white;
+            padding: 20px;
+            border-radius: 0 0 8px 8px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        
+        .lightbox-prev, .lightbox-next {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            font-size: 24px;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: 0 20px;
+        }
+        
+        .lightbox-prev:hover, .lightbox-next:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        /* Prevenir descargas */
+        .prevent-download {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
-    <div id="mobile-menu-open" class="shadow-large">
+  <div id="mobile-menu-open" class="shadow-large">
         <i class="fa fa-bars" aria-hidden="true"></i>
     </div>
-
+    <!-- End #mobile-menu-toggle -->
     <!-- header eliminado en esta página: navegación via botones dentro del lead -->
 
+    <!-- Antes: <div id="lead"> -->
     <div id="lead">
         <div id="lead-content">
             <img src="files/logo.jpeg" height="100"  />
@@ -49,43 +172,127 @@
             <h2 style="font-size:14px; margin:0 0 8px;">SIUNA</h2>
             <a href="index.html" class="btn-rounded-white">Acerca</a>
             <a href="files/ESTATUTO DE SIUNA APROBADOFINAL.pdf" class="btn-rounded-white" style="margin-left:8px;">Estatuto</a>
-            <a href="noticias.html" class="btn-rounded-white" style="margin-left:8px;">Noticias (Instagram)</a>
+            <a href="noticias.html" class="btn-rounded-white" style="margin-left:8px;">Noticias</a>
             <a href="socios.html" class="btn-rounded-white" style="margin-left:8px;">Formulario Socios</a>
         </div>
         <div id="lead-overlay"></div>
-        <div id="lead-down"><span><i class="fa fa-chevron-down" aria-hidden="true"></i></span></div>
     </div>
 
-    <!-- Noticias dentro de un cuadro similar a 'about' -->
-    <div id="news">
-        <div class="container" style="padding:40px 0;">
-            <div class="row">
-                <div class="col-md-4">
-                    <h2 class="heading">Noticias — Instagram</h2>
-                </div>
-                <div class="col-md-8">
-                    <div class="box">
-                        <p>Galería de imágenes publicadas en la cuenta de Instagram. Haz click para ver en tamaño completo.</p>
-                        <div class="row">
-                            <div class="col-sm-6 col-md-4" style="margin-bottom:20px;">
-                                <a href="files/instagram1.jpg" target="_blank"><img src="files/instagram1.jpg" alt="Post 1" style="width:100%;height:auto;"></a>
+        <div id="news">
+            <div class="container" style="padding:40px 0;">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h2 class="heading">Noticias</h2>
+                        <p>Mantente informado sobre las últimas novedades del SIUNA a través de nuestras publicaciones en Instagram.</p>
+                        <p>Haz clic en cualquier imagen para verla en grande y leer más información.</p>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="box">
+                            <p>Galería de imágenes publicadas en la cuenta de Instagram.</p>
+                            <div class="row">
+                                <!-- Noticia 1 -->
+                                <div class="col-sm-6 col-md-4" style="margin-bottom:20px;">
+                                    <div class="news-item" onclick="openLightbox(0)">
+                                        <img src="files/noticias/image001.png" alt="Inscripción provisional SIUNA" class="news-image prevent-download">
+                                        <div class="news-title">Inscripción Provisional</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Noticia 2 -->
+                                <div class="col-sm-6 col-md-4" style="margin-bottom:20px;">
+                                    <div class="news-item" onclick="openLightbox(1)">
+                                        <img src="files/noticias/image003.png" alt="Verificación de socios" class="news-image prevent-download">
+                                        <div class="news-title">Verificación de Socios</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Noticia 3 -->
+                                <div class="col-sm-6 col-md-4" style="margin-bottom:20px;">
+                                    <div class="news-item" onclick="openLightbox(2)">
+                                        <img src="files/noticias/image005.png" alt="Súmate al SIUNA" class="news-image prevent-download">
+                                        <div class="news-title">Súmate al SIUNA</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Noticia 4 -->
+                                <div class="col-sm-6 col-md-4" style="margin-bottom:20px;">
+                                    <div class="news-item" onclick="openLightbox(3)">
+                                        <img src="files/noticias/image007.png" alt="Comités de trabajo" class="news-image prevent-download">
+                                        <div class="news-title">Comités de Trabajo</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Noticia 5 -->
+                                <div class="col-sm-6 col-md-4" style="margin-bottom:20px;">
+                                    <div class="news-item" onclick="openLightbox(4)">
+                                        <img src="files/noticias/image009.png" alt="Acoso laboral" class="news-image prevent-download">
+                                        <div class="news-title">Acoso Laboral</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Noticia 6 -->
+                                <div class="col-sm-6 col-md-4" style="margin-bottom:20px;">
+                                    <div class="news-item" onclick="openLightbox(5)">
+                                        <img src="files/noticias/image011.png" alt="Acoso laboral" class="news-image prevent-download">
+                                        <div class="news-title">Concientización</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Noticia 7 -->
+                                <div class="col-sm-6 col-md-4" style="margin-bottom:20px;">
+                                    <div class="news-item" onclick="openLightbox(6)">
+                                        <img src="files/noticias/image013.png" alt="Acoso laboral" class="news-image prevent-download">
+                                        <div class="news-title">Derechos Laborales</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Noticia 8 -->
+                                <div class="col-sm-6 col-md-4" style="margin-bottom:20px;">
+                                    <div class="news-item" onclick="openLightbox(7)">
+                                        <img src="files/noticias/image015.png" alt="Webinar acoso laboral" class="news-image prevent-download">
+                                        <div class="news-title">Webinar Acoso Laboral</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Noticia 9 -->
+                                <div class="col-sm-6 col-md-4" style="margin-bottom:20px;">
+                                    <div class="news-item" onclick="openLightbox(8)">
+                                        <img src="files/noticias/image017.png" alt="Alerta SIUNA" class="news-image prevent-download">
+                                        <div class="news-title">Alerta SIUNA</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Noticia 10 -->
+                                <div class="col-sm-6 col-md-4" style="margin-bottom:20px;">
+                                    <div class="news-item" onclick="openLightbox(9)">
+                                        <img src="files/noticias/image019.png" alt="Alerta SIUNA" class="news-image prevent-download">
+                                        <div class="news-title">Derechos Laborales</div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-sm-6 col-md-4" style="margin-bottom:20px;">
-                                <a href="files/instagram2.jpg" target="_blank"><img src="files/instagram2.jpg" alt="Post 2" style="width:100%;height:auto;"></a>
-                            </div>
-                            <div class="col-sm-6 col-md-4" style="margin-bottom:20px;">
-                                <a href="files/instagram3.jpg" target="_blank"><img src="files/instagram3.jpg" alt="Post 3" style="width:100%;height:auto;"></a>
-                            </div>
-                            <!-- Añade más imágenes en archivos/files según sea necesario -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Contacto (copiado del index) -->
-    <div id="contact">
+        <!-- Lightbox -->
+        <div id="lightbox" class="lightbox">
+            <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+            <div class="lightbox-nav">
+                <button class="lightbox-prev" onclick="changeSlide(-1)">&#10094;</button>
+                <button class="lightbox-next" onclick="changeSlide(1)">&#10095;</button>
+            </div>
+            <div class="lightbox-content">
+                <img id="lightbox-img" class="lightbox-img prevent-download" src="" alt="">
+                <div class="lightbox-text">
+                    <h3 id="lightbox-title"></h3>
+                    <p id="lightbox-description"></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="contact">
         <h2>Contacto</h2>
         <div id="contact-form" style="max-width:400px;margin:auto;">
             <ul style="list-style:none;padding:0;">
@@ -105,23 +312,152 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-5 copyright">
-                    <p>Copyright &copy; <span id="current-year">2025</span> SIUNA</p>
+                    <p>
+                        Copyright &copy; <span id="current-year">2025</span> SIUNA
+                    </p>
                 </div>
                 <div class="col-sm-2 top">
-                    <span id="to-top"><i class="fa fa-chevron-up" aria-hidden="true"></i></span>
+                    <span id="to-top">
+                        <i class="fa fa-chevron-up" aria-hidden="true"></i>
+                    </span>
                 </div>
                 <div class="col-sm-5 social">
                     <p style="margin-bottom:8px;"><strong>Síguenos:</strong></p>
                     <ul>
-                        <li><a href="https://instagram.com/siunapyprensa" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                      
+                        <li>
+                            <a href="https://instagram.com/siunapyprensa" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
     </footer>
+    <!-- End footer -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/scripts.min.js"></script>
     <script src="js/menu-fix.js"></script>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Datos de las noticias
+         const newsData = [
+            {
+                title: "Asamblea General y Verificación de Socios",
+                description: "Convocamos a todos los afiliados a la Asamblea General Extraordinaria para revisar y modificar los Estatutos Sociales conforme a las observaciones del Viceministerio de Trabajo. Además, recordamos a todos los socios verificar su situación en el padrón y actualizar sus datos de contacto."
+            },
+            {
+                title: "Comunicado sobre Fondos CONACYT",
+                description: "Desde el SIUNA expresamos nuestra preocupación por la situación de los fondos destinados a la investigación a través del CONACYT. Exigimos transparencia en la distribución de recursos y garantías para la continuidad de los proyectos de investigación en la UNA. Estamos trabajando en propuestas concretas para mejorar el sistema de financiamiento."
+            },
+            {
+                title: "Formulario de Inscripción al SIUNA",
+                description: "¿Aún no formas parte del SIUNA? Completa nuestro formulario de inscripción en línea para unirte a la lucha por los derechos de los investigadores. Como socio podrás: Participar en las asambleas, integrar comités de trabajo, recibir asesoría legal y formar parte de nuestra red de apoyo mutuo."
+            },
+            {
+                title: "Convocatoria para Comités de Trabajo",
+                description: "El SIUNA invita a todos sus asociados a integrar los comités de trabajo temático. Los comités activos son: Comité de Acoso Laboral y Sexual, Comité de Situación Laboral de Investigadores, y Comité de Nivelación Salarial y Beneficios Laborales. Tu participación es fundamental para fortalecer nuestra representación."
+            },
+            {
+                title: "Comité de Acoso Laboral y Sexual",
+                description: "Este comité tiene como objetivos principales: Asesorar y acompañar a víctimas de acoso laboral o sexual, promover la implementación de protocolos contra el acoso en todas las dependencias de la UNA, capacitar a los asociados sobre sus derechos y realizar campañas de concientización sobre el tema."
+            },
+            {
+                title: "Comité de Situación Laboral de Investigadores",
+                description: "Este comité trabaja en: Documentar y analizar las diferentes situaciones laborales de los investigadores en la UNA, identificar problemas comunes y proponer soluciones, negociar mejoras en las condiciones contractuales, y velar por el cumplimiento de los derechos laborales establecidos en la legislación."
+            },
+            {
+                title: "Comité de Nivelación Salarial y Beneficios",
+                description: "Las funciones de este comité incluyen: Realizar estudios comparativos de salarios en el sector investigación, proponer esquemas de nivelación salarial equitativos, gestionar beneficios adicionales para los investigadores, y negociar mejoras en el sistema de compensaciones y reconocimientos profesionales."
+            },
+            {
+                title: "Denuncia de Acoso Laboral",
+                description: "Si estás experimentando acoso laboral en tu lugar de trabajo, el SIUNA te ofrece: Asesoramiento legal especializado, acompañamiento en el proceso de denuncia, apoyo psicológico si es necesario, y seguimiento del caso hasta su resolución. No estás solo/a, contáctanos de manera confidencial."
+            },
+            {
+                title: "Conversatorio sobre Acoso Laboral",
+                description: "Participa en nuestro conversatorio 'Acoso Laboral en la UNA: Normativa, debate y reflexiones'. Analizaremos: El reglamento del MTESS sobre acoso laboral, los protocolos implementados en FACSO y Medicina, estrategias de prevención, y crearemos un espacio seguro para compartir experiencias y propuestas."
+            },
+            {
+                title: "Comunicado sobre Acoso y Mobbing",
+                description: "El SIUNA alerta sobre el aumento de casos de acoso laboral y mobbing en la UNA. El acoso sistemático produce graves consecuencias: Deterioro de la salud mental y física, disminución del rendimiento laboral, desmotivación profesional, y en casos extremos, abandono de la carrera investigativa. Exigimos a las autoridades tomar medidas concretas."
+            }
+        ];
+
+        let currentSlide = 0;
+
+        // Actualizar año actual
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Abrir lightbox
+        function openLightbox(index) {
+            currentSlide = index;
+            updateLightbox();
+            document.getElementById('lightbox').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevenir scroll
+        }
+
+        // Cerrar lightbox
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restaurar scroll
+        }
+
+        // Cambiar slide
+        function changeSlide(direction) {
+            currentSlide += direction;
+            
+            // Circular navigation
+            if (currentSlide < 0) {
+                currentSlide = newsData.length - 1;
+            } else if (currentSlide >= newsData.length) {
+                currentSlide = 0;
+            }
+            
+            updateLightbox();
+        }
+
+        // Actualizar contenido del lightbox
+        function updateLightbox() {
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxTitle = document.getElementById('lightbox-title');
+            const lightboxDescription = document.getElementById('lightbox-description');
+            
+            // Obtener la imagen de la miniatura correspondiente
+            const thumbnail = document.querySelectorAll('.news-image')[currentSlide];
+            lightboxImg.src = thumbnail.src;
+            
+            // Actualizar texto
+            lightboxTitle.textContent = newsData[currentSlide].title;
+            lightboxDescription.textContent = newsData[currentSlide].description;
+        }
+
+        // Cerrar lightbox con tecla ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeLightbox();
+            } else if (event.key === 'ArrowLeft') {
+                changeSlide(-1);
+            } else if (event.key === 'ArrowRight') {
+                changeSlide(1);
+            }
+        });
+
+        // Prevenir clic derecho (descarga de imágenes)
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.classList.contains('prevent-download')) {
+                e.preventDefault();
+            }
+        });
+
+        // Prevenir arrastrar imágenes
+        document.addEventListener('dragstart', function(e) {
+            if (e.target.classList.contains('prevent-download')) {
+                e.preventDefault();
+            }
+        });
+    </script>
 </body>
 </html>
